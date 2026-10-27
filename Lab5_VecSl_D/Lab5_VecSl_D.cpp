@@ -1,9 +1,14 @@
-﻿#include <iostream>
+/****************************************
+* ФИ: Лучникова София                   *
+* Название: Строки, векторы и словари   *
+* Вариант: 13                           *
+* Блок: D                               *
+****************************************/
+
+#include <iostream>
 #include <vector>
 #include <map>
 #include <string>
-
-using namespace std;
 
 int main() {
   int recordCount;
@@ -23,19 +28,22 @@ int main() {
     //creating a new empty record
     map<string, string> record;
     //declaration of variables for the category and the value
-    string category, value;
+    string title, status;
 
-    getline(cin, category);
-    getline(cin, value);
+    cout << "title = ";
+    getline(cin, title);
+   
+    cout << "status = ";
+    getline(cin, status);
 
     //checking for empty values
-    if (category.empty() || value.empty()) {
+    if (title.empty() || status.empty()) {
       cout << "INVALID" << endl;
       return 1;
     }
     //adding data to the record
-    record["category"] = category;
-    record["value"] = value;
+    record["title"] = title;
+    record["status"] = status;
     //adding an entry to the general list
     records.push_back(record);
   }
@@ -43,14 +51,14 @@ int main() {
   map<string, vector<string>> grouped;
   ////grouping values by categories
   for (const auto& record : records) {
-    grouped[record.at("category")].push_back(record.at("value"));
+    grouped[record.at("title")].push_back(record.at("status"));
   }
   //output of grouping results
-  for (const auto& category : grouped) {
-    cout << category.first << ": ";
-    for (size_t index = 0; index < category.second.size(); ++index) {
-      cout << category.second[index];
-      if (index < category.second.size() - 1) {
+  for (const auto& title : grouped) {
+    cout << title.first << ": ";
+    for (size_t index = 0; index < title.second.size(); ++index) {
+      cout << title.second[index];
+      if (index < title.second.size() - 1) {
         cout << ", ";
       }
     }
