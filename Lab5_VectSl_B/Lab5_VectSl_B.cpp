@@ -54,7 +54,7 @@ int main() {
   //removing the first occurrence of the maximum value
   for (size_t position = 0; position < values.size(); ++position) {
     if (values[position] == maximum) {
-       values.erase(values.begin() + static_cast<long>(position));
+       values.erase(values.begin() + position);
        break;                                  
     }
   }
